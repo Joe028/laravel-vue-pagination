@@ -1,15 +1,7 @@
 <template>
     <renderless-laravel-vue-pagination :data="data" :limit="limit" v-on:pagination-change-page="onPaginationChangePage">
         <ul class="pagination" v-if="computed.total > computed.perPage" slot-scope="{ data, limit, computed, prevButtonEvents, nextButtonEvents, pageButtonEvents }">
-            <li class="page-item pagination-prev-nav" v-if="computed.prevPageUrl">
-                <a class="page-link" href="#" aria-label="Previous" v-on="prevButtonEvents">
-                    <slot name="prev-nav">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                    </slot>
-                </a>
-            </li>
-            <li>
+            
                 <slot name="inner-nav"></slot>
             </li>
             <li class="page-item pagination-page-nav" v-for="(page, key) in computed.pageRange" :key="key" :class="{ 'active': page == computed.currentPage }">
