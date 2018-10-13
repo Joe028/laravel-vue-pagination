@@ -3,31 +3,33 @@
         <div>
             <slot name="inner-nav"></slot>
         </div>
-        <div class="pagination" v-if="computed.total > computed.perPage" slot-scope="{ data, limit, computed, prevButtonEvents, nextButtonEvents, pageButtonEvents }">
+        <div class="pagination dots-pagination" v-if="computed.total > computed.perPage" slot-scope="{ data, limit, computed, prevButtonEvents, nextButtonEvents, pageButtonEvents }">
             <div>
-                <slot name="inner-nav"></slot>
+                <slot name="dots"></slot>
             </div>
-            <div class="page-item pagination-prev-nav" v-if="computed.prevPageUrl">
-                <a href="#" aria-label="Previous" v-on="prevButtonEvents">
-                    <slot name="prev-nav">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                    </slot>
-                </a>
-            </div>
-            <!--<div class="page-item pagination-page-nav" v-for="(page, key) in computed.pageRange" :key="key" :class="{ 'active': page == computed.currentPage }">
-                <a class="page-link" href="#" v-on="pageButtonEvents(page)">{{ page }}</a>
-            </div>-->
             <div>
-                {{computed.currentPage}} of {{computed.lastPage}}
-            </div>
-            <div class="page-item pagination-next-nav" v-if="computed.nextPageUrl">
-                <a href="#" aria-label="Next" v-on="nextButtonEvents">
-                    <slot name="next-nav">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                    </slot>
-                </a>
+                <div class="page-item pagination-prev-nav" v-if="computed.prevPageUrl">
+                    <a href="#" aria-label="Previous" v-on="prevButtonEvents">
+                        <slot name="prev-nav">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </slot>
+                    </a>
+                </div>
+                <!--<div class="page-item pagination-page-nav" v-for="(page, key) in computed.pageRange" :key="key" :class="{ 'active': page == computed.currentPage }">
+                    <a class="page-link" href="#" v-on="pageButtonEvents(page)">{{ page }}</a>
+                </div>-->
+                <div class="inner-nav">
+                    {{computed.currentPage}} of {{computed.lastPage}}
+                </div>
+                <div class="page-item pagination-next-nav" v-if="computed.nextPageUrl">
+                    <a href="#" aria-label="Next" v-on="nextButtonEvents">
+                        <slot name="next-nav">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </slot>
+                    </a>
+                </div>
             </div>
         </div>
 
