@@ -4,6 +4,9 @@
             <slot name="inner-nav"></slot>
         </div>
         <div class="pagination" v-if="computed.total > computed.perPage" slot-scope="{ data, limit, computed, prevButtonEvents, nextButtonEvents, pageButtonEvents }">
+            <div>
+                <slot name="inner-nav"></slot>
+            </div>
             <div class="page-item pagination-prev-nav" v-if="computed.prevPageUrl">
                 <a href="#" aria-label="Previous" v-on="prevButtonEvents">
                     <slot name="prev-nav">
@@ -16,7 +19,7 @@
                 <a class="page-link" href="#" v-on="pageButtonEvents(page)">{{ page }}</a>
             </div>-->
             <div>
-                {{computed.currentPage}} of {{computed.total}}
+                {{computed.currentPage}} of {{computed.lastPage}}
             </div>
             <div class="page-item pagination-next-nav" v-if="computed.nextPageUrl">
                 <a href="#" aria-label="Next" v-on="nextButtonEvents">
