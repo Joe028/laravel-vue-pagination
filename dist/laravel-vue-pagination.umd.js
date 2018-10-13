@@ -1063,14 +1063,22 @@ var es6_number_constructor = __webpack_require__("c5f6");
         click: function click(e) {
           e.preventDefault();
 
+          _this.$store.dispatch('loading', true);
+
           _this.previousPage();
+
+          _this.$store.dispatch('loading', false);
         }
       },
       nextButtonEvents: {
         click: function click(e) {
           e.preventDefault();
 
+          _this.$store.dispatch('loading', true);
+
           _this.nextPage();
+
+          _this.$store.dispatch('loading', false);
         }
       },
       pageButtonEvents: function pageButtonEvents(page) {

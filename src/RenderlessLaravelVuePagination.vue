@@ -122,13 +122,17 @@ export default {
             prevButtonEvents: {
                 click: (e) => {
                     e.preventDefault();
+                    this.$store.dispatch('loading', true)
                     this.previousPage();
+                    this.$store.dispatch('loading', false)
                 }
             },
             nextButtonEvents: {
                 click: (e) => {
                     e.preventDefault();
+                    this.$store.dispatch('loading', true)
                     this.nextPage();
+                    this.$store.dispatch('loading', false)
                 }
             },
             pageButtonEvents: page => ({
