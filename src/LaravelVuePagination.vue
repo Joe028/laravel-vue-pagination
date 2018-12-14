@@ -8,7 +8,7 @@
                 <slot name="dots"></slot>
             </div>
             <div>
-                <div class="page-item pagination-prev-nav" v-if="computed.prevPageUrl">
+                <div class="page-item pagination-prev-nav" v-if="computed.firstPageUrl">
                     <span aria-label="Previous" v-on="prevButtonEvents">
                         <slot name="prev-nav">
                             <span aria-hidden="true">&laquo;</span>
