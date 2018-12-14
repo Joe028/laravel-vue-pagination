@@ -3,12 +3,12 @@
         <div>
             <slot name="inner-nav"></slot>
         </div>
-        <div class="pagination dots-pagination" v-if="computed.total > computed.perPage" slot-scope="{ data, limit, computed, prevButtonEvents, nextButtonEvents, pageButtonEvents }">
+        <div class="pagination dots-pagination" slot-scope="{ data, limit, computed, prevButtonEvents, nextButtonEvents, pageButtonEvents }">
             <div>
                 <slot name="dots"></slot>
             </div>
             <div>
-                <div class="page-item pagination-prev-nav" v-if="computed.firstPageUrl">
+                <div class="page-item pagination-prev-nav" v-if="computed.prevPageUrl">
                     <span aria-label="Previous" v-on="prevButtonEvents">
                         <slot name="prev-nav">
                             <span aria-hidden="true">&laquo;</span>
