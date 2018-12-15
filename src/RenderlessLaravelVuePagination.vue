@@ -102,7 +102,7 @@ export default {
             if (page === '...') {
                 return;
             }
-
+console.log(page)
             this.$emit('pagination-change-page', page);
         }
     },

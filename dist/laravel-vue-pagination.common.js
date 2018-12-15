@@ -1033,6 +1033,7 @@ var es6_number_constructor = __webpack_require__("c5f6");
         return;
       }
 
+      console.log(page);
       this.$emit('pagination-change-page', page);
     }
   },
