@@ -921,7 +921,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"545da000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LaravelVuePagination.vue?vue&type=template&id=d4c1ec90&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"545da000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LaravelVuePagination.vue?vue&type=template&id=71737128&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('renderless-laravel-vue-pagination',{attrs:{"data":_vm.data,"limit":_vm.limit},on:{"pagination-change-page":_vm.onPaginationChangePage},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var data = ref.data;
 var limit = ref.limit;
@@ -929,11 +929,11 @@ var computed = ref.computed;
 var prevButtonEvents = ref.prevButtonEvents;
 var nextButtonEvents = ref.nextButtonEvents;
 var pageButtonEvents = ref.pageButtonEvents;
-return _c('div',{staticClass:"pagination dots-pagination"},[_c('div',[_vm._t("dots")],2),_c('div',[(computed.prevPageUrl)?_c('div',{staticClass:"page-item pagination-prev-nav"},[_c('span',_vm._g({attrs:{"aria-label":"Previous"}},prevButtonEvents),[_vm._t("prev-nav",[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")]),_c('span',{staticClass:"sr-only"},[_vm._v("Previous")])])],2)]):_vm._e(),_c('div',{staticClass:"inner-nav"},[_vm._v("\n                "+_vm._s(computed.currentPage)+" of "+_vm._s(computed.lastPage)+"\n            ")]),(computed.nextPageUrl)?_c('div',{staticClass:"page-item pagination-next-nav"},[_c('span',_vm._g({attrs:{"aria-label":"Next"}},nextButtonEvents),[_vm._t("next-nav",[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")]),_c('span',{staticClass:"sr-only"},[_vm._v("Next")])])],2)]):_vm._e()])])}}])},[_c('div',[_vm._t("inner-nav")],2)])}
+return _c('div',{staticClass:"pagination dots-pagination"},[_c('div',[_vm._t("dots")],2),_c('div',[(computed.currentPage > 5)?_c('div',{staticClass:"page-item pagination-prev-nav"},[_c('span',_vm._g({attrs:{"aria-label":"Previous"}},_vm.prevMoreButtonEvents),[_vm._t("prev-nav-more",[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")]),_c('span',{staticClass:"sr-only"},[_vm._v("Previous")])])],2)]):_vm._e(),(computed.prevPageUrl)?_c('div',{staticClass:"page-item pagination-prev-nav"},[_c('span',_vm._g({attrs:{"aria-label":"Previous"}},prevButtonEvents),[_vm._t("prev-nav",[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")]),_c('span',{staticClass:"sr-only"},[_vm._v("Previous")])])],2)]):_vm._e(),_c('div',{staticClass:"inner-nav"},[_vm._v("\n                "+_vm._s(computed.currentPage)+" of "+_vm._s(computed.lastPage)+"\n            ")]),(computed.nextPageUrl)?_c('div',{staticClass:"page-item pagination-next-nav"},[_c('span',_vm._g({attrs:{"aria-label":"Next"}},nextButtonEvents),[_vm._t("next-nav",[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")]),_c('span',{staticClass:"sr-only"},[_vm._v("Next")])])],2)]):_vm._e(),((computed.total / 10) - computed.currentPage >= 4)?_c('div',{staticClass:"page-item pagination-next-nav"},[_c('span',_vm._g({attrs:{"aria-label":"Next"}},_vm.nextMoreButtonEvents),[_vm._t("next-nav-more",[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")]),_c('span',{staticClass:"sr-only"},[_vm._v("Next")])])],2)]):_vm._e()])])}}])},[_c('div',[_vm._t("inner-nav")],2)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/LaravelVuePagination.vue?vue&type=template&id=d4c1ec90&
+// CONCATENATED MODULE: ./src/LaravelVuePagination.vue?vue&type=template&id=71737128&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
 var es6_number_constructor = __webpack_require__("c5f6");
@@ -1031,6 +1031,12 @@ var es6_number_constructor = __webpack_require__("c5f6");
     nextPage: function nextPage() {
       this.selectPage(this.currentPage + 1);
     },
+    previousMorePage: function previousMorePage() {
+      this.selectPage(this.currentPage - 5);
+    },
+    nextMorePage: function nextMorePage() {
+      this.selectPage(this.currentPage + 5);
+    },
     selectPage: function selectPage(page) {
       if (page === '...') {
         return;
@@ -1077,6 +1083,28 @@ var es6_number_constructor = __webpack_require__("c5f6");
           _this.$store.dispatch('loading', true);
 
           _this.nextPage();
+
+          _this.$store.dispatch('loading', false);
+        }
+      },
+      prevMoreButtonEvents: {
+        click: function click(e) {
+          e.preventDefault();
+
+          _this.$store.dispatch('loading', true);
+
+          _this.previousMorePage();
+
+          _this.$store.dispatch('loading', false);
+        }
+      },
+      nextMoreButtonEvents: {
+        click: function click(e) {
+          e.preventDefault();
+
+          _this.$store.dispatch('loading', true);
+
+          _this.nextMorePage();
 
           _this.$store.dispatch('loading', false);
         }
@@ -1213,6 +1241,25 @@ component.options.__file = "RenderlessLaravelVuePagination.vue"
 /* harmony default export */ var RenderlessLaravelVuePagination = (component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LaravelVuePagination.vue?vue&type=script&lang=js&
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //

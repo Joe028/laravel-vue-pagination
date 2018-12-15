@@ -92,6 +92,12 @@ export default {
         nextPage () {
             this.selectPage((this.currentPage + 1));
         },
+        previousMorePage () {
+            this.selectPage((this.currentPage - 5));
+        },
+        nextMorePage () {
+            this.selectPage((this.currentPage + 5));
+        },
         selectPage (page) {
             if (page === '...') {
                 return;
@@ -132,6 +138,22 @@ export default {
                     e.preventDefault();
                     this.$store.dispatch('loading', true)
                     this.nextPage();
+                    this.$store.dispatch('loading', false)
+                }
+            },
+            prevMoreButtonEvents: {
+                click: (e) => {
+                    e.preventDefault();
+                    this.$store.dispatch('loading', true)
+                    this.previousMorePage();
+                    this.$store.dispatch('loading', false)
+                }
+            },
+            nextMoreButtonEvents: {
+                click: (e) => {
+                    e.preventDefault();
+                    this.$store.dispatch('loading', true)
+                    this.nextMorePage();
                     this.$store.dispatch('loading', false)
                 }
             },

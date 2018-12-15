@@ -8,6 +8,15 @@
                 <slot name="dots"></slot>
             </div>
             <div>
+                <div class="page-item pagination-prev-nav" v-if="computed.currentPage > 5">
+                    <span aria-label="Previous" v-on="prevMoreButtonEvents">
+                        <slot name="prev-nav-more">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </slot>
+                    </span>
+                </div>
+
                 <div class="page-item pagination-prev-nav" v-if="computed.prevPageUrl">
                     <span aria-label="Previous" v-on="prevButtonEvents">
                         <slot name="prev-nav">
@@ -22,10 +31,20 @@
                 <div class="inner-nav">
                     {{computed.currentPage}} of {{computed.lastPage}}
                 </div>
+
                 <div class="page-item pagination-next-nav" v-if="computed.nextPageUrl">
                     <span aria-label="Next" v-on="nextButtonEvents">
                         <slot name="next-nav">
                             <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </slot>
+                    </span>
+                </div>
+
+                <div class="page-item pagination-next-nav" v-if="(computed.total / 10) - computed.currentPage >= 4">
+                    <span aria-label="Next" v-on="nextMoreButtonEvents">
+                        <slot name="next-nav-more">
+                            <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Next</span>
                         </slot>
                     </span>
