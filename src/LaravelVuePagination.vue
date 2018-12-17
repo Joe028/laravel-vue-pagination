@@ -3,13 +3,13 @@
         <div>
             <slot name="inner-nav"></slot>
         </div>
-        <div class="pagination dots-pagination" slot-scope="{ data, limit, computed, prevButtonEvents, nextButtonEvents, pageButtonEvents }">
+        <div class="pagination dots-pagination" slot-scope="{ data, limit, computed, prevMoreButtonEvents, prevButtonEvents, nextButtonEvents, nextMoreButtonEvents, pageButtonEvents }">
             <div>
                 <slot name="dots"></slot>
             </div>
             <div>
                 <div class="page-item pagination-prev-nav" v-if="computed.currentPage > 5">
-                    <span aria-label="Previous" v-on="prevMoreButtonEvents">
+                    <span aria-label="PreviousMore" v-on="prevMoreButtonEvents">
                         <slot name="prev-nav-more">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
@@ -42,9 +42,9 @@
                 </div>
 
                 <div class="page-item pagination-next-nav" v-if="(computed.total / 10) - computed.currentPage >= 4">
-                    <span aria-label="Next" v-on="nextMoreButtonEvents">
+                    <span aria-label="NextMore" v-on="nextMoreButtonEvents">
                         <slot name="next-nav-more">
-                            <span aria-hidden="true">&laquo;</span>
+                            <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>
                         </slot>
                     </span>
