@@ -155,7 +155,7 @@ export default {
                     this.nextMorePage();
                     this.$store.dispatch('loading', false)
                 }
-            },
+            }, 
             pageButtonEvents: page => ({
                 click: (e) => {
                     e.preventDefault();
